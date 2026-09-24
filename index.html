@@ -1,59 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Coming soon</title>
-<style>
-  :root{
-    --paper:#f6f8f7;
-    --paper-raised:#ffffff;
-    --ink:#20302d;
-    --body:#333f3c;
-    --muted:#67726d;
-    --accent:#2f6f62;
-    --line:#dbe3df;
-    --tbc-bg:#fbf1dd;
-    --tbc-line:#e4c684;
-    --tbc-ink:#7a5a17;
-  }
-  *{box-sizing:border-box;}
-  body{
-    margin:0;min-height:100vh;
-    display:flex;align-items:center;justify-content:center;
-    background:var(--paper);color:var(--body);
-    font-family:Georgia,"Times New Roman",serif;
-    font-size:18px;line-height:1.6;
-    padding:24px;-webkit-font-smoothing:antialiased;
-  }
-  main{
-    max-width:480px;width:100%;
-    background:var(--paper-raised);
-    border-top:3px solid var(--accent);
-    border-radius:4px;
-    padding:40px 34px;
-    text-align:center;
-  }
-  h1{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    font-weight:600;font-size:26px;line-height:1.3;
-    color:var(--ink);margin:0 0 14px;
-  }
-  p{margin:0 0 10px;}
-  .note{color:var(--muted);font-size:15.5px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line);}
-  .tbc{
-    background:var(--tbc-bg);border:1px solid var(--tbc-line);border-radius:4px;
-    padding:1px 7px;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    font-size:14px;color:var(--tbc-ink);
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Fallback title; the real one comes from js/content.js -->
+  <title>JM Cook | Author</title>
+  <meta name="description" content="">
+  <link rel="icon" href="assets/images/jmcook-logo.jpeg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Dancing+Script:wght@600&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,700;1,6..12,400&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script src="js/content.js" defer></script>
+  <script src="js/main.js" defer></script>
 </head>
-<body>
-<main>
-  <h1>Your new website is on its way</h1>
-  <p>This address is connected and working. The site itself is being built now — check back here as we go, and it'll update as pages go live.</p>
-  <p class="note">A site for <span class="tbc">JM Cook</span>, currently in progress.</p>
-</main>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top">
+        <!-- Decorative here: the name beside it says the same thing -->
+        <img class="brand-logo" data-src="logo.src" alt="" width="56" height="56">
+        <span class="brand-text">
+          <span class="brand-name" data-content="author.name"></span>
+          <span class="brand-role" data-content="author.role"></span>
+        </span>
+      </a>
+
+      <nav class="site-nav" aria-label="Main">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list" hidden>
+          <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span class="nav-toggle-label">Menu</span>
+        </button>
+        <ul class="nav-list" id="nav-list" data-list="nav"></ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <noscript>
+      <p class="noscript">This preview needs JavaScript switched on to show its content.</p>
+    </noscript>
+
+    <!-- 1. Picture + welcome -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container hero-inner">
+        <div class="hero-picture">
+          <img class="hero-logo" data-src="logo.src" data-alt="logo.alt" alt="" width="1254" height="1254">
+        </div>
+        <div class="hero-text">
+          <p class="hero-greeting" data-content="hero.greeting"></p>
+          <h1 id="hero-heading" data-content="hero.heading"></h1>
+          <p class="hero-intro" data-content="hero.intro"></p>
+          <a class="button button-on-brand" data-link="hero.cta"></a>
+        </div>
+        <!-- Flair: steaming coffee mug (decorative) -->
+        <svg class="coffee" viewBox="0 0 120 130" aria-hidden="true" focusable="false">
+          <g class="steam" fill="none" stroke-linecap="round" stroke-width="4">
+            <path class="steam-1" d="M38 52 C 30 42, 46 36, 38 24 S 42 8, 38 2"/>
+            <path class="steam-2" d="M58 52 C 50 42, 66 36, 58 24 S 62 8, 58 2"/>
+            <path class="steam-3" d="M78 52 C 70 42, 86 36, 78 24 S 82 8, 78 2"/>
+          </g>
+          <path class="mug-handle" d="M94 72 h8 a14 14 0 0 1 0 28 h-8" fill="none" stroke-width="7"/>
+          <path class="mug" d="M22 60 h74 v38 a22 22 0 0 1 -22 22 h-30 a22 22 0 0 1 -22 -22 z"/>
+          <path class="mug-heart" d="M59 98 l-9 -9 a5.5 5.5 0 0 1 9 -7 a5.5 5.5 0 0 1 9 7 z"/>
+        </svg>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"><span class="daisy"></span></div>
+
+    <!-- 2. Coming soon / latest release -->
+    <section class="section coming-soon reveal" id="coming-soon" aria-labelledby="coming-soon-heading">
+      <div class="container split">
+        <div class="book-stage" aria-hidden="true">
+          <div class="book">
+            <div class="book-cover">
+              <span class="book-flowers"></span>
+              <span class="book-line1" data-content="comingSoon.coverLine1"></span>
+              <span class="book-line2" data-content="comingSoon.coverLine2"></span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h2 id="coming-soon-heading" data-content="comingSoon.heading"></h2>
+          <p class="kicker" data-content="comingSoon.kicker"></p>
+          <p class="book-title" data-content="comingSoon.title"></p>
+          <div data-paragraphs="comingSoon.paragraphs"></div>
+          <a class="button" data-link="comingSoon.cta"></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. About me -->
+    <section class="section about reveal" id="about" aria-labelledby="about-heading">
+      <div class="container about-inner">
+        <div class="about-text">
+          <h2 id="about-heading" data-content="about.heading"></h2>
+          <p class="about-intro" data-content="about.intro"></p>
+          <div data-paragraphs="about.paragraphs"></div>
+        </div>
+        <aside class="facts" aria-labelledby="facts-heading">
+          <h3 id="facts-heading" data-content="about.factsHeading"></h3>
+          <dl class="facts-list" data-list="about.facts"></dl>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 4. Books -->
+    <section class="section books reveal" id="books" aria-labelledby="books-heading">
+      <div class="container">
+        <h2 id="books-heading" data-content="books.heading"></h2>
+        <p class="section-intro" data-content="books.intro"></p>
+        <div data-list="books.items"></div>
+      </div>
+    </section>
+
+    <!-- 5. Newsletter -->
+    <section class="section newsletter reveal" id="newsletter" aria-labelledby="newsletter-heading">
+      <div class="container narrow">
+        <h2 id="newsletter-heading" data-content="newsletter.heading"></h2>
+        <p data-content="newsletter.intro"></p>
+        <form class="signup" novalidate>
+          <label for="email" data-content="newsletter.label"></label>
+          <p class="hint" id="email-hint" data-content="newsletter.hint"></p>
+          <p class="error" id="email-error" role="alert"></p>
+          <div class="signup-row">
+            <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-hint">
+            <button class="button button-on-brand" type="submit" data-content="newsletter.button"></button>
+          </div>
+          <p class="status" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span data-year></span> <span data-content="author.name"></span></p>
+      <p data-content="footer.note"></p>
+    </div>
+  </footer>
 </body>
 </html>
