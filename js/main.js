@@ -171,7 +171,7 @@
     reveals.forEach(function (s) { s.classList.add("is-visible"); });
   }
 
-  /* ---------- 4. Newsletter form (preview only, not connected) ---------- */
+  /* ---------- 4. Newsletter form (sends sign-ups to MailerLite) ---------- */
 
   var form = document.querySelector(".signup");
   var input = form.querySelector("input");
@@ -196,14 +196,44 @@
     input.setAttribute("aria-describedby", "email-hint");
   }
 
+  var button = form.querySelector("button");
+  var sending = false;
+
   form.addEventListener("submit", function (e) {
     e.preventDefault();
+    if (sending) return;
     var value = input.value.trim();
     if (!value) return showError(N.errorEmpty);
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return showError(N.errorInvalid);
     clearError();
-    form.reset();
-    status.textContent = N.success;
+
+    // aria-disabled (not disabled) so keyboard focus stays on the button.
+    sending = true;
+    button.setAttribute("aria-disabled", "true");
+
+    var body = new URLSearchParams();
+    body.append("fields[email]", value);
+    body.append("ml-submit", "1");
+    body.append("anticsrf", "true");
+
+    var controller = new AbortController();
+    var timer = setTimeout(function () { controller.abort(); }, 10000);
+
+    // no-cors gives an opaque reply we can't read: a resolved fetch means
+    // "sent", a rejected one (offline, blocked, timed out) means failure.
+    fetch(N.actionUrl, { method: "POST", mode: "no-cors", body: body, signal: controller.signal })
+      .then(function () {
+        form.reset();
+        status.textContent = N.success;
+      })
+      .catch(function () {
+        showError(N.errorSend);
+      })
+      .then(function () {
+        clearTimeout(timer);
+        sending = false;
+        button.removeAttribute("aria-disabled");
+      });
   });
 
   /* ---------- 5. Palette preview (designer tool) ----------

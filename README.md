@@ -27,4 +27,5 @@ In `js/content.js`, add an entry to `books.items`. There's a commented example i
 - Every text/background colour pair in all four palettes meets WCAG AA contrast (4.5:1 or better).
 - Decorative flourishes (coffee mug, book mock-up, flower divider) are hidden from screen readers. The logo in the header has empty alt text because the name sits right next to it. The large logo has a full description.
 - Animations switch off when the visitor's device asks for reduced motion.
-- The newsletter form reads out its errors and success message. **It isn't connected to a mailing service yet.**
+- The newsletter form reads out its errors and success message. Sign-ups are sent to MailerLite; the settings live in `js/content.js` (`newsletter.actionUrl`).
+- If the MailerLite form is ever deleted or recreated, its action URL changes and `newsletter.actionUrl` must be updated.

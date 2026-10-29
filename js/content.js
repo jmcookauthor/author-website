@@ -95,8 +95,13 @@ window.SITE_CONTENT = {
     button: "Sign me up",
     errorEmpty: "Please enter your email address.",
     errorInvalid: "That doesn't look like a complete email address. Please check it and try again.",
+    // Sign-ups go to the MailerLite form. If that form is deleted or recreated,
+    // its action URL changes and this must be updated.
+    actionUrl: "https://assets.mailerlite.com/jsonp/2724487/forms/201755145156953556/subscribe",
     success:
-      "Thank you! This is a preview of the site, so sign-up isn't connected yet and nothing was sent.",
+      "Thank you! Please check your inbox for a confirmation email and click the link to finish signing up. If it isn't there in a few minutes, check your spam folder.",
+    errorSend:
+      "Sorry, something went wrong and your sign-up didn't go through. Please check your connection and try again in a moment.",
   },
 
   footer: {
